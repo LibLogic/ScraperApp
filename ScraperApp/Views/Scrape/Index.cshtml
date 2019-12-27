@@ -1,0 +1,43 @@
+﻿@model System.Data.DataTable;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Scrape Time</th>
+        <th>Symbol</th>
+        <th>Last Price</th>
+        <th>Change</th>
+        <th> Chg. %</th>
+        <th>Currency</th>
+        <th>Market Time</th>
+        <th>Volume</th>
+        <th>Shares</th>
+        <th>Avg. Volume</th>
+        <th>Day Range</th>
+        <th>Day Chart</th>
+        <th>52 Week Range</th>
+        <th>Market Cap</th>
+    </tr>
+
+    @for (int i = 0; i < 10; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td>@Model.Rows[i][7]</td>
+            <td>@Model.Rows[i][8]</td>
+            <td>@Model.Rows[i][9]</td>
+            <td>@Model.Rows[i][10]</td>
+            <td>@Model.Rows[i][11]</td>
+            <td>@Model.Rows[i][12]</td>
+            <td>@Model.Rows[i][13]</td>
+            <td>@Model.Rows[i][14]</td>
+        </tr>
+    }
+</table>
