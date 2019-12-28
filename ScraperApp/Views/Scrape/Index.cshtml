@@ -3,48 +3,41 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Scrape Time —  @Model.Rows[Model.Rows.Count - 10][1]</h2>
-<button>Latest Scrape</button>
-<button>New Scrape</button>
-<div style="border-top: 1px solid black; border-bottom: 1px solid black; border-left: 1px solid black; margin: 2% 0 2% 0; padding: 1% 1% 0 1%; width: auto; height: 345px; overflow-x: auto; overflow-y: scroll;">
-    <table style="table-layout: auto; width: 100%; border: 3px solid green" class="table table-bordered table-striped">
-        <tr>
-            <!--            <th>Scrape Time</th> -->
-            <th>Symbol</th>
-            <th>Last Price</th>
-            <th>Change</th>
-            <th> Chg. %</th>
-            <th>Currency</th>
-            <th>Market Time</th>
-            <th>Volume</th>
-            <th>Shares</th>
-            <th>Avg. Volume</th>
-            <th>Day Range</th>
-            <th>Day Chart</th>
-            <th>52 Week Range</th>
-            <th>Market Cap</th>
-        </tr>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Scrape Time</th>
+        <th>Symbol</th>
+        <th>Last Price</th>
+        <th>Change</th>
+        <th> Chg. %</th>
+        <th>Currency</th>
+        <th>Market Time</th>
+        <th>Volume</th>
+        <th>Shares</th>
+        <th>Avg. Volume</th>
+        <th>Day Range</th>
+        <th>Day Chart</th>
+        <th>52 Week Range</th>
+        <th>Market Cap</th>
+    </tr>
 
-        @for (int i = Model.Rows.Count - 10; i <  Model.Rows.Count; i++)
-        {
-            <tr>
-                <td>@Model.Rows[i][2]</td>
-                <td>@Model.Rows[i][3]</td>
-                <td>@Model.Rows[i][4]</td>
-                <td>@Model.Rows[i][5]</td>
-                <td>@Model.Rows[i][6]</td>
-                <td>@Model.Rows[i][7]</td>
-                <td>@Model.Rows[i][8]</td>
-                <td>@Model.Rows[i][9]</td>
-                <td>@Model.Rows[i][10]</td>
-                <td>@Model.Rows[i][11]</td>
-                <td>@Model.Rows[i][12]</td>
-                <td>@Model.Rows[i][13]</td>
-                <td>@Model.Rows[i][14]</td>
-            </tr>
-        }
-    </table>
-</div>
-<button>Start Date</button>
-<button>Previous</button>
-<button>Next</button>
+    @for (int i = 0; i < 10; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td>@Model.Rows[i][7]</td>
+            <td>@Model.Rows[i][8]</td>
+            <td>@Model.Rows[i][9]</td>
+            <td>@Model.Rows[i][10]</td>
+            <td>@Model.Rows[i][11]</td>
+            <td>@Model.Rows[i][12]</td>
+            <td>@Model.Rows[i][13]</td>
+            <td>@Model.Rows[i][14]</td>
+        </tr>
+    }
+</table>
