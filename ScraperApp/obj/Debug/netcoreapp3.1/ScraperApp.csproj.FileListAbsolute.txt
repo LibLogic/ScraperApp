@@ -153,3 +153,4 @@ C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.dll
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.pdb
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Scrape\History.cshtml.g.cs
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Scrape\Fetch.cshtml.g.cs

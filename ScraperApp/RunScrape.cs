@@ -7,15 +7,12 @@ namespace ScraperApp
 {
     public class RunScrape
     {
-        public void GetScrape()
+        public void GetScrape(string user, string pass)
         {
+            //string userId = "hdgknsn@gmail.com"; // get these from db
+            //string pass = "Lino@7196";
 
-  
-
-            string userId = "hdgknsn@gmail.com"; // get these from db
-            string pass = "Lino@7196";
-
-            UserCredentials currentUser = new UserCredentials(userId, pass);
+            UserCredentials currentUser = new UserCredentials(user, pass);
 
             ScraperConsole.Scrape.RunScrape(currentUser); 
         }

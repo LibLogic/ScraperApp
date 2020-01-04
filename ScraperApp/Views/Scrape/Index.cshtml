@@ -5,7 +5,11 @@
 @if (Model.Rows.Count > 0)
 {
     <h2 style="margin-top: 6%; display: inline-block"> @Model.Rows[0][1]</h2>
-    <button style="margin-right: .5%; margin-top: 7.2%; float: right">New Scrape</button>
+
+
+    <button class="new-scrape-btn" onclick="runScrape()">New Scrape</button>
+    
+    
     <div class="scroll-div">
         <table class="table table-bordered table-striped">
             <tr>
@@ -49,6 +53,12 @@ else
 {
 <div>
     <h1 style="text-align: center; margin-top: 15%;">No Scrapes to Display</h1>
-    <button style="display: block; padding: 2%; margin: auto; margin-top: 3.2%;">Do a Scrape</button>
+    <button style="display: block; padding: 2%; margin: auto; margin-top: 3.2%;" onclick="runScrape">Do a Scrape</button>
 </div>
 }
+
+<script>
+    function runScrape() {
+        window.location = "/Scrape/Fetch";
+    }
+</script>

@@ -88,3 +88,9 @@ body {
 .table {
     border: 3px solid green;
 }
+
+.new-scrape-btn {
+    margin-right: .5%; 
+    margin-top: 7.2%; 
+    float: right;
+}
