@@ -29,7 +29,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Tom\\Desktop\\Development\\CapstoneProject\\ScraperConsole\\ScraperConsole.csproj": {
+                "projectPath": "C:\\Users\\Tom\\Desktop\\Development\\CapstoneProject\\ScraperConsole\\ScraperConsole.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -69,6 +73,10 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[79.0.3945.3600, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.0, )"
@@ -94,6 +102,17 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\Tom\\Desktop\\Development\\CapstoneProject\\ScraperConsole\\ScraperConsole.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Tom\\Desktop\\Development\\CapstoneProject\\ScraperConsole\\ScraperConsole.csproj",
+        "projectName": "ScraperConsole",
+        "projectPath": "C:\\Users\\Tom\\Desktop\\Development\\CapstoneProject\\ScraperConsole\\ScraperConsole.csproj"
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }

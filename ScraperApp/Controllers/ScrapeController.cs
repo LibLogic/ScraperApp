@@ -1,105 +1,68 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using ScraperApp.Data;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Security.Claims;
 
 namespace ScraperApp.Controllers
 {
+    [Authorize]
     public class ScrapeController : Controller
     {
-        string connectionString = @"Data Source=WINDOWS-10; Initial Catalog=WebScraper; Integrated Security=SSPI";
+        private readonly ScraperAppContext _application;
+        public ScrapeController(ScraperAppContext application)
+        {
+            _application = application;
+        }
+
+        readonly string connectionString = @"Data Source=WINDOWS-10; Initial Catalog=WebScraper; Integrated Security=SSPI";
+
         [HttpGet]
         // GET: Scrape
-        public ActionResult Index()
+        public ActionResult Index ([FromQuery(Name = "scrapeId")] string scrapeId)
         {
+            //RunScrape runscrape = new RunScrape();
+            //runscrape.GetScrape();
+            string user = User.FindFirst(ClaimTypes.Name).Value;
+            //string query = $"SELECT * FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes) AND Users_Scrapes.UserName = '{user}')";
+
+            string query = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE UserName = '{user}'))";
+            
+            if (scrapeId != null)
+            {
+                query = $"SELECT * FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE Users_Scrapes.id = '{scrapeId}' AND Users_Scrapes.UserName = '{user}')";
+            }
+
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                con.Open();
-                string query = "SELECT * FROM Scrapes";
+ 
                 SqlDataAdapter sda = new SqlDataAdapter(query, con);
                 sda.Fill(dt);
             }
-                return View(dt);
+            return View(dt);
         }
 
-        // GET: Scrape/Details/5
-        public ActionResult Details(int id)
+        private object DateTime(string v)
         {
-            return View();
+            throw new NotImplementedException();
         }
 
-        // GET: Scrape/Create
-        public ActionResult Create()
+        public ActionResult History()
         {
-            return View();
-        }
+            string user = User.FindFirst(ClaimTypes.Name).Value;
 
-        // POST: Scrape/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                // TODO: Add insert logic here
+                string query = $"SELECT ScrapeId, id FROM Users_Scrapes WHERE UserName = '{user}'";
 
-                return RedirectToAction(nameof(Index));
+                SqlDataAdapter sda = new SqlDataAdapter(query, con);
+                sda.Fill(dt);
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Scrape/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Scrape/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Scrape/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Scrape/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View(dt);
         }
     }
 }

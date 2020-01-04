@@ -1,3 +1,7 @@
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\nunit.engine.dll
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\nunit.engine.api.dll
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -111,6 +115,11 @@ C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\ScraperConsole.exe
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\WebDriver.dll
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\ScraperConsole.pdb
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\ScraperConsole.exe.config
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\WebDriver.xml
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.csprojAssemblyReference.cache
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\staticwebassets\ScraperApp.StaticWebAssets.Manifest.cache
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\staticwebassets\ScraperApp.StaticWebAssets.xml
@@ -123,9 +132,13 @@ C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.TagHelpers.input.cache
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.TagHelpers.output.cache
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.RazorCoreGenerate.cache
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
-C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Scrape\Index.cshtml.g.cs
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -139,3 +152,4 @@ C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.csproj.CopyComplete
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.dll
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.pdb
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Scrape\History.cshtml.g.cs

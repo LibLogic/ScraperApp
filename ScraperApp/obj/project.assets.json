@@ -1166,6 +1166,12 @@
           }
         }
       },
+      "Selenium.WebDriver.ChromeDriver/79.0.3945.3600": {
+        "type": "package",
+        "build": {
+          "build/Selenium.WebDriver.ChromeDriver.targets": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2676,6 +2682,15 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "ScraperConsole/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ScraperConsole.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ScraperConsole.dll": {}
         }
       }
     }
@@ -4504,6 +4519,21 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Selenium.WebDriver.ChromeDriver/79.0.3945.3600": {
+      "sha512": "ng2VdpBOI4ciRJpcT7mxgEBU9FGYZ+T7reHdgrqKXoKJtTRZvqKee4qxRPdkBSGxAZKcg9wzgKr3E7YEfacy/Q==",
+      "type": "package",
+      "path": "selenium.webdriver.chromedriver/79.0.3945.3600",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Selenium.WebDriver.ChromeDriver.targets",
+        "driver/linux64/chromedriver",
+        "driver/mac64/chromedriver",
+        "driver/win32/chromedriver.exe",
+        "selenium.webdriver.chromedriver.79.0.3945.3600.nupkg.sha512",
+        "selenium.webdriver.chromedriver.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -8650,6 +8680,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "ScraperConsole/1.0.0": {
+      "type": "project",
+      "path": "../ScraperConsole/ScraperConsole.csproj",
+      "msbuildProject": "../ScraperConsole/ScraperConsole.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8661,6 +8696,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0",
       "Microsoft.Extensions.Logging.Debug >= 3.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.0",
+      "ScraperConsole >= 1.0.0",
+      "Selenium.WebDriver.ChromeDriver >= 79.0.3945.3600",
       "System.Data.SqlClient >= 4.8.0"
     ]
   },
@@ -8693,7 +8730,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Tom\\Desktop\\Development\\CapstoneProject\\ScraperConsole\\ScraperConsole.csproj": {
+              "projectPath": "C:\\Users\\Tom\\Desktop\\Development\\CapstoneProject\\ScraperConsole\\ScraperConsole.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -8732,6 +8773,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[3.1.0, )"
+          },
+          "Selenium.WebDriver.ChromeDriver": {
+            "target": "Package",
+            "version": "[79.0.3945.3600, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
