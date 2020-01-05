@@ -3,20 +3,35 @@
 @{
     ViewData["Title"] = "History";
 }
+
 <h2 style="text-align: center">Past Scrapes</h2>
 <div class="scroll-div">
-    <table class="table table-bordered table-striped">
+    <table class="table table-striped">
         <tr>
             <th>Date & Time</th>
         </tr>
-
         @for (int i = 0; i < Model.Rows.Count; i++)
         {
-            <tr>
-                <td><a href="/Scrape/?scrapeId=@Model.Rows[i][1]">
-                    @Model.Rows[i][0]
-                    </a></td>
-            </tr>
+            @if (@ViewBag.latest != @Model.Rows[i][0].ToString())
+            {
+                <tr>
+                    <td>
+                        <a href="/Scrape/?scrapeId=@Model.Rows[i][1]&stale=true">
+                            @Model.Rows[i][0]
+                        </a>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        <a href="/Scrape/?scrapeId=@Model.Rows[i][1]">
+                            @Model.Rows[i][0]
+                        </a>
+                    </td>
+                </tr>
+            }
         }
     </table>
 </div>

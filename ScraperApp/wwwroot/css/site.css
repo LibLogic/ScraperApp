@@ -65,6 +65,11 @@ body {
     margin-bottom: 60px;
 }
 
+h2 {
+    margin-top: 6%;
+    color: green;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -85,8 +90,20 @@ body {
     padding: 1% 1% 0 0;
 }
 
-.table {
+table {
     border: 3px solid green;
+}
+
+table.stale {
+        border: 3px solid gray;
+    }
+
+.stale {
+    color: gray;
+}
+
+span.stale {
+    display: none;
 }
 
 .new-scrape-btn {

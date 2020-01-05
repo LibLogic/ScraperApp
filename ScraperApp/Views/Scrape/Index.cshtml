@@ -2,16 +2,13 @@
 @{
     ViewData["Title"] = "Index";
 }
+
 @if (Model.Rows.Count > 0)
 {
-    <h2 style="margin-top: 6%; display: inline-block"> @Model.Rows[0][1]</h2>
-
-
+    <h2 class="@ViewBag.status" style="display: inline-block"> @Model.Rows[0][1]<span class=" @ViewBag.status"> — (Most Recent Scrape)</span></h2>
     <button class="new-scrape-btn" onclick="runScrape()">New Scrape</button>
-    
-    
     <div class="scroll-div">
-        <table class="table table-bordered table-striped">
+        <table class="table table-striped @ViewBag.status">
             <tr>
                 <th>Symbol</th>
                 <th>Last Price</th>
@@ -30,31 +27,31 @@
 
             @for (int i = 0; i < Model.Rows.Count; i++)
             {
-        <tr>
-            <td>@Model.Rows[i][2]</td>
-            <td>@Model.Rows[i][3]</td>
-            <td>@Model.Rows[i][4]</td>
-            <td>@Model.Rows[i][5]</td>
-            <td>@Model.Rows[i][6]</td>
-            <td>@Model.Rows[i][7]</td>
-            <td>@Model.Rows[i][8]</td>
-            <td>@Model.Rows[i][9]</td>
-            <td>@Model.Rows[i][10]</td>
-            <td>@Model.Rows[i][11]</td>
-            <td>@Model.Rows[i][12]</td>
-            <td>@Model.Rows[i][13]</td>
-            <td>@Model.Rows[i][14]</td>
-        </tr>
+                <tr>
+                    <td>@Model.Rows[i][2]</td>
+                    <td>@Model.Rows[i][3]</td>
+                    <td>@Model.Rows[i][4]</td>
+                    <td>@Model.Rows[i][5]</td>
+                    <td>@Model.Rows[i][6]</td>
+                    <td>@Model.Rows[i][7]</td>
+                    <td>@Model.Rows[i][8]</td>
+                    <td>@Model.Rows[i][9]</td>
+                    <td>@Model.Rows[i][10]</td>
+                    <td>@Model.Rows[i][11]</td>
+                    <td>@Model.Rows[i][12]</td>
+                    <td>@Model.Rows[i][13]</td>
+                    <td>@Model.Rows[i][14]</td>
+                </tr>
             }
         </table>
-    </div>
+</div>
 }
 else
 {
-<div>
-    <h1 style="text-align: center; margin-top: 15%;">No Scrapes to Display</h1>
-    <button style="display: block; padding: 2%; margin: auto; margin-top: 3.2%;" onclick="runScrape">Do a Scrape</button>
-</div>
+    <div>
+        <h1 style="text-align: center; margin-top: 15%;">No Scrapes to Display</h1>
+        <button style="display: block; padding: 2%; margin: auto; margin-top: 3.2%;" onclick="runScrape()">Do a Scrape</button>
+    </div>
 }
 
 <script>

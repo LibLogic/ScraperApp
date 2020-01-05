@@ -2162,6 +2162,14 @@
           }
         }
       },
+      "nunit.framework/3.12.0.0": {
+        "runtime": {
+          "nunit.framework.dll": {
+            "assemblyVersion": "3.12.0.0",
+            "fileVersion": "3.12.0.0"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -5023,6 +5031,11 @@
       "sha512": ""
     },
     "WebDriver/3.141.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "nunit.framework/3.12.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

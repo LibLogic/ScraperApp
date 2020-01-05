@@ -154,3 +154,6 @@ C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\ScraperApp.pdb
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Scrape\History.cshtml.g.cs
 C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\obj\Debug\netcoreapp3.1\Razor\Views\Scrape\Fetch.cshtml.g.cs
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\nunit.framework.dll
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\nunit.framework.pdb
+C:\Users\Tom\Desktop\Development\CapstoneProject\ScraperApp\bin\Debug\netcoreapp3.1\nunit.framework.xml
