@@ -4,9 +4,9 @@
     ViewData["Title"] = "History";
 }
 
-<h2 style="color: black; text-align: center">Past Scrapes</h2>
+<h2 style="color: rgb(238, 159, 159); text-align: center">Scrape History</h2>
 <div class="scroll-div">
-    <table class="table table-striped">
+    <table class="table table-striped stale">
         <tr>
             <th>Date & Time</th>
         </tr>
@@ -26,8 +26,8 @@
             {
                 <tr>
                     <td>
-                        <a href="/Scrape/?scrapeId=@Model.Rows[i][1]">
-                            @Model.Rows[i][0]
+                        <a style="color: green; font-weight: 600" href="/Scrape/?scrapeId=@Model.Rows[i][1]">
+                            @Model.Rows[i][0]  — Most Recent Scrape
                         </a>
                     </td>
                 </tr>

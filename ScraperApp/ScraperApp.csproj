@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-ScraperApp-D7EA6544-850D-41D1-B020-10275D4AC67B</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\ScraperConsole</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
