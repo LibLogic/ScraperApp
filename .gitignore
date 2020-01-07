@@ -1,6 +1,8 @@
 .vs
-lastScrape.csv
-obj
-bin
+ScraperConsole/lastScrape.csv
+ScraperConsole/obj
+ScraperConsole/bin
+
+ScraperApp/obj
 ScraperApp/bin 
  
