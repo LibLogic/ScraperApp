@@ -4,7 +4,7 @@
     ViewData["Title"] = "History";
 }
 
-<h2 style="color: rgb(238, 159, 159); text-align: center">Scrape History</h2>
+<h2 style="color: rgb(229, 81, 81); text-align: center">Scrape History</h2>
 <div class="scroll-div">
     <table class="table table-striped stale">
         <tr>
@@ -16,7 +16,7 @@
             {
                 <tr>
                     <td>
-                        <a href="/Scrape/?scrapeId=@Model.Rows[i][1]&stale=true">
+                        <a style="color: rgb(229, 31, 31); font-weight: 600" href="/Scrape/?scrapeId=@Model.Rows[i][1]&stale=true">
                             @Model.Rows[i][0]
                         </a>
                     </td>
