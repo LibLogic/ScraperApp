@@ -1,8 +1,4 @@
 .vs
-ScraperConsole/lastScrape.csv
-ScraperConsole/obj
-ScraperConsole/bin
-
-ScraperApp/obj
-ScraperApp/bin 
- 
+lastScrape.csv
+obj
+bin
