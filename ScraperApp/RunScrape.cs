@@ -1,13 +1,11 @@
-﻿using static ScraperConsole.Settings.Yahoo;
-
-namespace ScraperApp
+﻿namespace ScraperApp
 {
     public class RunScrape
     {
         public void GetScrape(string user, string pass)
         {
-            UserCredentials currentUser = new UserCredentials(user, pass);
-            ScraperConsole.Scrape.RunScrape(currentUser); 
+            Settings.Yahoo.UserCredentials currentUser = new Settings.Yahoo.UserCredentials(user, pass);
+            Scrape.RunScrape(currentUser); 
         }
     }
 }
