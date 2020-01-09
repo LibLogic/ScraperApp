@@ -1,7 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
 using System.Collections.Generic;
-using static ScraperConsole.Settings.Yahoo;
 
 namespace ScraperApp
 {
