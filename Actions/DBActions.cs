@@ -12,7 +12,7 @@ namespace ScraperApp
         {
             public static void ToConsole(string table)
             {
-                SqlConnection conn = GetConnection();
+                SqlConnection conn = DB.Connect();
                 conn.Open();
                 SqlCommand command = new SqlCommand($"SELECT * FROM {table}", conn);
                 SqlDataReader reader = command.ExecuteReader();
@@ -37,12 +37,6 @@ namespace ScraperApp
                     }
                 }
             }
-        }
-
-        public static SqlConnection GetConnection()
-        {
-            SqlConnection conn = new SqlConnection(@"Data Source=WINDOWS-10; Initial Catalog=WebScraper; Integrated Security=SSPI");
-            return conn;
         }
 
         public static void WriteTables(List<string> scrapeData, string table, Settings.Yahoo.UserCredentials currentUser)
@@ -87,7 +81,7 @@ namespace ScraperApp
                 }
             }
 
-            SqlConnection conn = GetConnection();
+            SqlConnection conn =DB.Connect();
             conn.Open();
 
             using (SqlBulkCopy copy = new SqlBulkCopy(conn))

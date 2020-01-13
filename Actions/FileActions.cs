@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Collections.Generic;
 
 namespace ScraperApp
-{ 
+{
     class FileActions
     {
         public static string WriteCSVFile(List<string> tableText)

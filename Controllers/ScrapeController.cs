@@ -17,8 +17,6 @@ namespace ScraperApp.Controllers
             _db = db;
         }
 
-        readonly string connectionString = @"Data Source=WINDOWS-10; Initial Catalog=WebScraper; Integrated Security=SSPI";
-       
         string latestScrape = "";
 
         [HttpGet]
@@ -37,8 +35,7 @@ namespace ScraperApp.Controllers
                         pass = item.YahooPassword;
                     }
                 }
-                RunScrape runscrape = new RunScrape();
-                runscrape.GetScrape(user, pass);
+                RunScrape.GetScrape(user, pass);
             }
 
             string query = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE UserName = '{user}')) ORDER BY Symbol";
@@ -53,7 +50,7 @@ namespace ScraperApp.Controllers
             }
 
             DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = DB.Connect())
             {
                 SqlDataAdapter sda = new SqlDataAdapter(query, con);
                 sda.Fill(dt);
@@ -68,7 +65,7 @@ namespace ScraperApp.Controllers
 
             string query1 = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE UserName = '{user}'))";
             DataTable dt1 = new DataTable();
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = DB.Connect())
             {
                 SqlDataAdapter sda = new SqlDataAdapter(query1, con);
                 sda.Fill(dt1);
@@ -77,7 +74,7 @@ namespace ScraperApp.Controllers
             }
 
             DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = DB.Connect())
             {
                 string query = $"SELECT ScrapeId, id FROM Users_Scrapes WHERE UserName = '{user}' ORDER BY ScrapeId DESC";
 
