@@ -23,6 +23,7 @@ namespace ScraperApp.Controllers
         // GET: Scrape
         public ActionResult Index([FromQuery(Name = "scrapeId")] string scrapeId, [FromQuery(Name = "getScrape")] string getScrape, [FromQuery(Name = "stale")] string stale)
         {
+            string UserId = "";
             string user = User.Identity.Name;
             string pass = "";
 
@@ -32,13 +33,14 @@ namespace ScraperApp.Controllers
                 {
                     if (item.UserName == user)
                     {
+                        UserId = item.Id;
                         pass = item.YahooPassword;
                     }
                 }
-                RunScrape.GetScrape(user, pass);
+                RunScrape.GetScrape(user, pass, UserId);
             }
 
-            string query = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE UserName = '{user}')) ORDER BY Symbol";
+            string query = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}'))) ORDER BY Symbol";
 
             if (scrapeId != null)
             {
@@ -46,7 +48,7 @@ namespace ScraperApp.Controllers
                 {
                     ViewBag.status = "stale";
                 }
-                query = $"SELECT * FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE Users_Scrapes.id = '{scrapeId}' AND Users_Scrapes.UserName = '{user}') ORDER BY Symbol";
+                query = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE Users_Scrapes.id = '{scrapeId}')";
             }
 
             DataTable dt = new DataTable();
@@ -55,7 +57,7 @@ namespace ScraperApp.Controllers
                 SqlDataAdapter sda = new SqlDataAdapter(query, con);
                 sda.Fill(dt);
             }
- 
+
             return View(dt);
         }
 
@@ -63,7 +65,8 @@ namespace ScraperApp.Controllers
         {
             string user = User.FindFirst(ClaimTypes.Name).Value;
 
-            string query1 = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE UserName = '{user}'))";
+            string query1 = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}')))";
+                                 
             DataTable dt1 = new DataTable();
             using (SqlConnection con = DB.Connect())
             {
@@ -76,7 +79,7 @@ namespace ScraperApp.Controllers
             DataTable dt = new DataTable();
             using (SqlConnection con = DB.Connect())
             {
-                string query = $"SELECT ScrapeId, id FROM Users_Scrapes WHERE UserName = '{user}' ORDER BY ScrapeId DESC";
+                string query  = $"SELECT ScrapeId, id FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}') ORDER BY ScrapeId DESC";
 
                 SqlDataAdapter sda = new SqlDataAdapter(query, con);
                 sda.Fill(dt);

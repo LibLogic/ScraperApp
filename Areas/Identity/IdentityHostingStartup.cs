@@ -16,7 +16,6 @@ namespace ScraperApp.Areas.Identity
                 services.AddDbContext<ScraperAppContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("ScraperAppContextConnection")));
-
                 services.AddDefaultIdentity<ScraperAppUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<ScraperAppContext>();
             });

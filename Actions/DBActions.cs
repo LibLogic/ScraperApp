@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Security.Claims;
 
 namespace ScraperApp
 {
     class DBActions
     {
+
         public class DisplayTable
         {
             public static void ToConsole(string table)
@@ -39,8 +42,9 @@ namespace ScraperApp
             }
         }
 
-        public static void WriteTables(List<string> scrapeData, string table, Settings.Yahoo.UserCredentials currentUser)
+        public static void WriteTables(List<string> scrapeData, string table, Settings.Yahoo.UserCredentials currentUser, string UserId)
         {
+
             string scrapetime = "";
             string CSVFile = FileActions.WriteCSVFile(scrapeData);
 
@@ -54,8 +58,6 @@ namespace ScraperApp
                 while ((line = stream.ReadLine()) != null)
                 {
                     string[] data = line.Split(',');
-
-
 
                     if (data.Length > 0)
                     {
@@ -91,20 +93,18 @@ namespace ScraperApp
             }
             conn.Close();
 
-            string name = currentUser.UserName;
-            //write to Users_Scrapes table  need currentUser & ScapeTime
-            string query = $"INSERT INTO Users_Scrapes (ScrapeId, UserName) VALUES (@ScrapeId, @UserName)";
+            string userId = UserId;
+
+            string query = $"INSERT INTO Users_Scrapes (ScrapeId, AspUserId) VALUES (@ScrapeId, @AspUserId)";
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.Add("@ScrapeId", SqlDbType.DateTime2, 7).Value = scrapetime;
-                cmd.Parameters.Add("@UserName", SqlDbType.NVarChar, 450).Value = name;
+                cmd.Parameters.Add("@AspUserId", SqlDbType.NVarChar, 450).Value = userId;
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
-
-
         }
     }
 }
