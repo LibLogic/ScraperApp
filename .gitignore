@@ -1,4 +1,5 @@
 .vs
+appsettings.json
 lastScrape.csv
 obj
 bin
