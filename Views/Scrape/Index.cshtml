@@ -5,7 +5,7 @@
 
 @if (Model.Rows.Count > 0)
 {
-    <h2 class="@ViewBag.status" style="display: inline-block"> @Model.Rows[0][1]<span class=" @ViewBag.status"></span></h2>
+    <h2 class="@ViewBag.status" style="display: inline-block">@ViewBag.latest<span class="@ViewBag.status"></span></h2>
     <button class="new-scrape-btn" onclick="runScrape()">New Scrape</button>
     <div class="scroll-div">
         <table class="table table-striped @ViewBag.status">
@@ -28,6 +28,7 @@
             @for (int i = 0; i < Model.Rows.Count; i++)
             {
                 <tr>
+                    <td>@Model.Rows[i][1]</td>
                     <td>@Model.Rows[i][2]</td>
                     <td>@Model.Rows[i][3]</td>
                     <td>@Model.Rows[i][4]</td>
@@ -40,11 +41,10 @@
                     <td>@Model.Rows[i][11]</td>
                     <td>@Model.Rows[i][12]</td>
                     <td>@Model.Rows[i][13]</td>
-                    <td>@Model.Rows[i][14]</td>
                 </tr>
             }
         </table>
-</div>
+    </div>
 }
 else
 {

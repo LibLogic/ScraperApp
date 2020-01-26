@@ -12,8 +12,7 @@ namespace ScraperApp
             List<string> tableText = new List<string>();
             string xPath;
 
-            tableText.Add("id");
-            tableText.Add("Scrape Time");
+            tableText.Add("ScrapeId");
             for (int i = 1; i <= 13; i++)
             {
                 if (i == 13)
@@ -30,15 +29,11 @@ namespace ScraperApp
                 }
             }
 
-            DateTime time = DateTime.Now;
-
             IWebElement elementTable = driver.FindElement(By.XPath($"//*[@id='pf-detail-table']/div[1]/table"));
             List<IWebElement> elementRows = new List<IWebElement>(elementTable.FindElements(By.TagName("tr")));
 
             for (int i = 1; i < elementRows.Count; i++)
             {
-                tableText.Add(time.ToString("O"));
-
                 xPath = $"//*[@id='pf-detail-table']/div[1]/table/tbody/tr[{i}]/td[1]/a";
                 element = driver.FindElement(By.XPath(xPath));
                 tableText.Add(element.Text);

@@ -10,42 +10,27 @@ namespace ScraperApp
 {
     class DBActions
     {
-
-        public class DisplayTable
-        {
-            public static void ToConsole(string table)
-            {
-                SqlConnection conn = DB.Connect();
-                conn.Open();
-                SqlCommand command = new SqlCommand($"SELECT * FROM {table}", conn);
-                SqlDataReader reader = command.ExecuteReader();
-                try
-                {
-                    while (reader.Read())
-                    {
-                        Console.WriteLine("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}{12}{13}",
-                                            reader[1], reader[2], reader[3], reader[4], reader[5], reader[6], reader[7],
-                                            reader[8], reader[9], reader[10], reader[11], reader[12], reader[13], reader[14]);
-                    }
-                }
-                finally
-                {
-                    if (reader != null)
-                    {
-                        reader.Close();
-                    }
-                    if (conn != null)
-                    {
-                        conn.Close();
-                    }
-                }
-            }
-        }
-
         public static void WriteTables(List<string> scrapeData, string table, Settings.Yahoo.UserCredentials currentUser, string UserId)
         {
+            string userId = UserId;
+            string ScrapeId;
+            DateTime scrapeTime = DateTime.Now;
 
-            string scrapetime = "";
+            SqlConnection conn = DB.Connect();
+
+            string query = $"INSERT INTO Users_Scrapes (ScrapeId, AspUserId) VALUES (@ScrapeId, @AspUserId) SELECT SCOPE_IDENTITY()";
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.Add("@ScrapeId", SqlDbType.DateTime2, 7).Value = scrapeTime;
+                cmd.Parameters.Add("@AspUserId", SqlDbType.NVarChar, 450).Value = userId;
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                ScrapeId = reader[0].ToString();
+                conn.Close();
+            }
+
             string CSVFile = FileActions.WriteCSVFile(scrapeData);
 
             DataTable dt = new DataTable();
@@ -73,8 +58,9 @@ namespace ScraperApp
                         {
                             if (i == 1)
                             {
-                                scrapetime = data[1];
+                                data[0] = ScrapeId;
                             }
+
                             DataRow row = dt.NewRow();
                             row.ItemArray = data;
                             dt.Rows.Add(row);
@@ -83,7 +69,6 @@ namespace ScraperApp
                 }
             }
 
-            SqlConnection conn =DB.Connect();
             conn.Open();
 
             using (SqlBulkCopy copy = new SqlBulkCopy(conn))
@@ -92,19 +77,6 @@ namespace ScraperApp
                 copy.WriteToServer(dt);
             }
             conn.Close();
-
-            string userId = UserId;
-
-            string query = $"INSERT INTO Users_Scrapes (ScrapeId, AspUserId) VALUES (@ScrapeId, @AspUserId)";
-            using (SqlCommand cmd = new SqlCommand(query, conn))
-            {
-                cmd.Parameters.Add("@ScrapeId", SqlDbType.DateTime2, 7).Value = scrapetime;
-                cmd.Parameters.Add("@AspUserId", SqlDbType.NVarChar, 450).Value = userId;
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }
         }
     }
 }

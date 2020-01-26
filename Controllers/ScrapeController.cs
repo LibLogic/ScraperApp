@@ -39,25 +39,36 @@ namespace ScraperApp.Controllers
                 }
                 RunScrape.GetScrape(user, pass, UserId);
             }
-
-            string query = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}'))) ORDER BY Symbol";
-
+                       
+            string query = $"SELECT* FROM Scrapes WHERE ScrapeId = (SELECT id FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}'))) ORDER BY Symbol";
             if (scrapeId != null)
             {
                 if (stale == "true")
                 {
                     ViewBag.status = "stale";
                 }
-                query = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE Users_Scrapes.id = '{scrapeId}')";
+
+                query = $"SELECT* FROM Scrapes WHERE ScrapeId = (SELECT id FROM Users_Scrapes WHERE Users_Scrapes.id = '{scrapeId}')";
             }
 
+            string query1 = $"SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}')";
+
+            DataTable dt1 = new DataTable();
+            using (SqlConnection con = DB.Connect())
+            {
+                SqlDataAdapter sda = new SqlDataAdapter(query1, con);
+                sda.Fill(dt1);
+
+                latestScrape = dt1.Rows[dt1.Rows.Count - 1][0].ToString();
+            }
+            
             DataTable dt = new DataTable();
             using (SqlConnection con = DB.Connect())
             {
                 SqlDataAdapter sda = new SqlDataAdapter(query, con);
                 sda.Fill(dt);
             }
-
+            ViewBag.latest = latestScrape;
             return View(dt);
         }
 
@@ -65,15 +76,15 @@ namespace ScraperApp.Controllers
         {
             string user = User.FindFirst(ClaimTypes.Name).Value;
 
-            string query1 = $"SELECT* FROM Scrapes WHERE ScrapeTime = (SELECT ScrapeId FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}')))";
-                                 
+            string query1 = $"SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}')";
+
             DataTable dt1 = new DataTable();
             using (SqlConnection con = DB.Connect())
             {
                 SqlDataAdapter sda = new SqlDataAdapter(query1, con);
                 sda.Fill(dt1);
 
-                latestScrape = dt1.Rows[dt1.Rows.Count - 1][1].ToString();
+                latestScrape = dt1.Rows[dt1.Rows.Count - 1][0].ToString();
             }
 
             DataTable dt = new DataTable();
