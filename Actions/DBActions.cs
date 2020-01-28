@@ -16,10 +16,10 @@ namespace ScraperApp
 
             SqlConnection conn = DB.Connect();
 
-            string query = $"INSERT INTO Users_Scrapes (ScrapeId, AspUserId) VALUES (@ScrapeId, @AspUserId) SELECT SCOPE_IDENTITY()";
+            string query = $"INSERT INTO Users_Scrapes (ScrapeTime, AspUserId) VALUES (@ScrapeTime, @AspUserId) SELECT SCOPE_IDENTITY()";
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.Add("@ScrapeId", SqlDbType.DateTime2, 7).Value = scrapeTime;
+                cmd.Parameters.Add("@ScrapeTime", SqlDbType.DateTime2, 7).Value = scrapeTime;
                 cmd.Parameters.Add("@AspUserId", SqlDbType.NVarChar, 450).Value = userId;
 
                 conn.Open();

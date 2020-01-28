@@ -40,7 +40,7 @@ namespace ScraperApp.Controllers
                 RunScrape.GetScrape(user, pass, UserId);
             }
                        
-            string query = $"SELECT* FROM Scrapes WHERE ScrapeId = (SELECT id FROM Users_Scrapes WHERE ScrapeId = (SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}'))) ORDER BY Symbol";
+            string query = $"SELECT* FROM Scrapes WHERE ScrapeId = (SELECT id FROM Users_Scrapes WHERE ScrapeTime = (SELECT MAX(ScrapeTime) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}'))) ORDER BY Symbol";
             if (scrapeId != null)
             {
                 if (stale == "true")
@@ -51,7 +51,7 @@ namespace ScraperApp.Controllers
                 query = $"SELECT* FROM Scrapes WHERE ScrapeId = (SELECT id FROM Users_Scrapes WHERE Users_Scrapes.id = '{scrapeId}')";
             }
 
-            string query1 = $"SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}')";
+            string query1 = $"SELECT MAX(ScrapeTime) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}')";
 
             DataTable dt1 = new DataTable();
             using (SqlConnection con = DB.Connect())
@@ -76,7 +76,7 @@ namespace ScraperApp.Controllers
         {
             string user = User.FindFirst(ClaimTypes.Name).Value;
 
-            string query1 = $"SELECT MAX(ScrapeId) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}')";
+            string query1 = $"SELECT MAX(ScrapeTime) FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}')";
 
             DataTable dt1 = new DataTable();
             using (SqlConnection con = DB.Connect())
@@ -90,7 +90,7 @@ namespace ScraperApp.Controllers
             DataTable dt = new DataTable();
             using (SqlConnection con = DB.Connect())
             {
-                string query  = $"SELECT ScrapeId, id FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}') ORDER BY ScrapeId DESC";
+                string query  = $"SELECT ScrapeTime, id FROM Users_Scrapes WHERE AspUserId = (SELECT Id FROM AspNetUsers WHERE UserName = '{user}') ORDER BY ScrapeTime DESC";
 
                 SqlDataAdapter sda = new SqlDataAdapter(query, con);
                 sda.Fill(dt);
